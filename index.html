@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Janken</title>
-        <link rel="stylesheet" href="./styles.css">
-        <script src="./app.js" defer></script>
-    </head>
 
-    <body>
-        <h1>Project</h1>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Janken</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <button class="btn" id="rock">Rock</button>
+        <button class="btn" id="paper">Paper</button>
+        <button class="btn" id="scissors">Scissors</button>
+    </div>
+
+    <div class="results">
+        <h1>The results are :</h1>
+        <h3 id="res"></h3>
+        <div class="scoreDisplay">
+            <span id="computer">Computer : 0</span>
+            <span id="player">Player : 0</span>
+        </div>
+        <span id="computerVsPlayer"></span>
+    </div>
+
+</body>
 
 </html>

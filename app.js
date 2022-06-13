@@ -1,5 +1,27 @@
+const btn = document.querySelectorAll(".btn");
+const result = document.getElementById("res");
+const playerID = document.getElementById("player");
+const computerID = document.getElementById("computer");
+const versus = document.getElementById("computerVsPlayer");
 
-let computer = 0, player = 0;
+let computer = 0, player = 0, c = 0;
+
+btn.forEach(button => {
+    button.addEventListener("click", (e) => {
+        c++;
+        if (c < 6) {
+        result.textContent = playRound(e.target.textContent, computerPlay());
+            game();
+        }
+
+        if(c === 5){
+            computerVsPlayer();
+        }
+
+    });
+});
+
+
 
 function computerPlay() {
 
@@ -53,32 +75,28 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-// console.log(playRound(Pselection, computerPlay()));
-let c = "";
-
 function game() {
-    
-    for (let i = 0; i < 5; i++) {
 
-        const Pselection = prompt("Enter Rock or Paper or Scissors");
-        c = playRound(Pselection, computerPlay());
-
-        if ((c === "You Win! Rock beats Scissors") || (c === "You Win! Scissors beats Paper") || (c === "You Win! Paper beats Rock")) {
-            player++;
-        }
-        else if ((c === "You Lose! Rock beats Scissors") || (c === "You Lose! Scissors beats Paper") || (c === "You Lose! Paper beats Rock")) {
-            computer++;
-        }
-
-        console.log(c);
+    if ((result.textContent === "You Win! Rock beats Scissors") || (result.textContent === "You Win! Scissors beats Paper") || (result.textContent === "You Win! Paper beats Rock")) {
+        player++;
+        playerID.textContent = `Player : ${player}`;
+    }
+    else if ((result.textContent === "You Lose! Rock beats Scissors") || (result.textContent === "You Lose! Scissors beats Paper") || (result.textContent === "You Lose! Paper beats Rock")) {
+        computer++;
+        computerID.textContent = `Computer : ${computer}`;
     }
 
-    if (player > computer) {
-        console.log("Player wins");
-    }
-    else if (computer > player) {
-        console.log("Computer wins");
-    }
 }
 
-game();
+function computerVsPlayer(){
+
+if (player > computer) {
+    versus.textContent = `Player Wins!`;
+}
+else if (computer > player) {
+    versus.textContent = `Computer Wins!`;
+}
+else if (computer === player){
+    versus.textContent = `It's a draw`;
+}
+}
